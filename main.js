@@ -44,30 +44,24 @@ bot.on('update', (update) => {
 
 // get random gif
 const getGif = (chat, tag) => {
-  console.log('fetching gif')
   botMessage(chat, getMessage())
   giphy.random(tag)
   .then((res) => {
-    console.log('gif fetched')
     sendGif(chat, tag, res.data.image_url, 0)
   })
-  .catch((err) => console.error(err))
 }
 
 // send gif
 const sendGif = (chat_id, tag, url, count) => {
   if (count == 3) {
     botMessage(chat_id, 'sinto muito mas sua pesquisa eh idiota d+')
-    console.log('aborting')
     return
   }
-  console.log('sending gif')
   botMessage(chat_id, getMessage())
   bot.sendVideo({
     chat_id,
     caption: `ta aqui seu ${tag} seu bosta`,
     video: url
   })
-  .then((data) => console.log('gif sent'))
   .catch((err) => sendGif(chat_id, tag, url, count + 1))
 }
