@@ -44,13 +44,18 @@ const getGif = (tag) => {
   giphy.random(tag)
   .then((res) => {
     console.log('gif fetched')
-    sendGif(tag, res.data.image_url)
+    sendGif(tag, res.data.image_url, 0)
   })
   .catch((err) => console.error(err))
 }
 
 // send gif
-const sendGif = (tag, url) => {
+const sendGif = (tag, url, count) => {
+  if (count == 3) {
+    botMessage('sinto muito mas sua pesquisa eh idiota dms')
+    console.log('aborting')
+    return
+  }
   console.log('sending gif')
   botMessage(getMessage())
   bot.sendVideo({
@@ -59,5 +64,5 @@ const sendGif = (tag, url) => {
     video: url
   })
   .then((data) => console.log('gif sent'))
-  .catch((err) => sendGif(tag, url))
+  .catch((err) => sendGif(tag, url, count + 1))
 }
