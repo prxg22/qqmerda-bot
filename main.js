@@ -37,7 +37,6 @@ bot.on('update', (update) => {
   } else if (text == '/healthcheck@qqmerda_bot') {
     botMessage(chat, 'to vivao nenem')
   } else if (text == '/giphy@qqmerda_bot') {
-    waitintInput = update.message.from.id
     s.add(user)
     botMessage(chat, 'q tag arrombado?')
   }
