@@ -19,6 +19,8 @@
   "dependencies": {
     "giphy-api": "^1.2.7",
     "random-seed": "^0.3.0",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5",
     "telegram-bot-api": "^1.2.0"
   }
 }
